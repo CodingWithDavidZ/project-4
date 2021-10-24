@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/faker-ruby/faker.git
+  revision: e58b15f5e9e0044b43cd2229bb46877aa64c104c
+  branch: master
+  specs:
+    faker (2.19.0)
+      i18n (>= 1.6, < 2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -184,6 +192,7 @@ DEPENDENCIES
   bcrypt (~> 3.1.7)
   bootsnap (>= 1.4.4)
   byebug
+  faker!
   listen (~> 3.3)
   pg (~> 1.1)
   puma (~> 5.0)
@@ -198,4 +207,4 @@ RUBY VERSION
    ruby 2.7.4p191
 
 BUNDLED WITH
-   2.2.24
+   2.2.29
