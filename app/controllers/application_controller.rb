@@ -14,5 +14,6 @@ end
 
 def render_unprocessable_entity(exceptions)
   render json: {errors: exceptions.record.errors.full_messages}, status: :unprocessable_entity
+end
 
 end
