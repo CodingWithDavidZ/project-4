@@ -31,6 +31,7 @@
   padding: 10px;
   padding-left: 25px;
   color: #2f2963;
+  font-weight: bold;
 }
 
 #sign_in_button{
@@ -39,7 +40,8 @@
   background-color: #454372;
   border: 1px black;
   border-radius: 8px;
-  color: white
+  color: white;
+  font-weight: bold;
 }
 
 #sign_in_button:hover{

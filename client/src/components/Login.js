@@ -43,6 +43,7 @@ function Login({apiURL}) {
                     type='text'
                     className='form_control'
                     id='username_field'
+                    name="username"
                     placeholder='Username'
                     onChange={handleLogin}
                 />
@@ -53,6 +54,7 @@ function Login({apiURL}) {
                     type='password'
                     className='form_control'
                     id='password_field'
+                    name="password"
                     placeholder='Password'
                     onChange={handleLogin}
                 />              
