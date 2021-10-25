@@ -37,22 +37,24 @@ function Login({apiURL}) {
         <div id="login_box">
             <h1>Login</h1>
             <form id='user_login' autocomplete="off" onsubmit={handleSubmit}>
+                <h4 className='login_descriptor'>Username</h4>
                 <input
                     required
                     value={input.username}
                     type='text'
-                    className='form_control'
+                    className='login_input_fields'
                     id='username_field'
                     name="username"
                     placeholder='Username'
                     onChange={handleLogin}
                 />
                 <br/>
+                <h4 className='login_descriptor'>Password</h4>
                 <input
                     required
                     value={input.password}
                     type='password'
-                    className='form_control'
+                    className='login_input_fields'
                     id='password_field'
                     name="password"
                     placeholder='Password'
