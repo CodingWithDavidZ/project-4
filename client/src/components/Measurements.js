@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-function Measurements({apiUrl}) {
+function Measurements({metricsUrl}) {
     const [input, setInput] = useState({
         chest_size: '',
         waist_size: '',
@@ -21,7 +21,7 @@ function Measurements({apiUrl}) {
 
     function handleSubmit(e){
         e.preventDefault();
-        fetch(`${apiUrl}`,{
+        fetch(`${metricsUrl}`,{
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({

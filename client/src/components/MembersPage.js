@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from 'react'
 
-function MembersPage({apiUrl}) {
-    const [userData, setUserData]=useState([]);
+function MembersPage({memberUrl}) {
+    const [userData, setUserData] = useState([]);
+
     useEffect(() =>{
-        fetch(`${apiUrl}`)
+        fetch(`${memberUrl}`)
         .then((response)=> response.json())
         .then((data => setUserData(data)));
     },[]);

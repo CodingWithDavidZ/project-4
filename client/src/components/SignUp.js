@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-function SignUp({apiURL}) {
+function SignUp({signUpURL}) {
     const [input, setInput] = useState({
         first_name: '',
         last_name: '',
@@ -16,7 +16,7 @@ function SignUp({apiURL}) {
 
     function handleSubmit(e){
         e.preventDefault();
-        fetch(`${apiURL}`,{
+        fetch(`${signUpUrl}`,{
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
@@ -37,7 +37,7 @@ function SignUp({apiURL}) {
         });
     }
 
-
+console.log(input)
 
     return (
         <div id="sign_up_box">
