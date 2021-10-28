@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   # GET /users/1
   def show
-    render json: @current_user
+    render json: @current_user, include: [:metrics]
   end
 
   # POST /users
@@ -22,6 +22,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :birthdate, :username, :password_digest)
+      params.require(:user).permit(:first_name, :last_name, :birthdate, :username, :password)
     end
 end

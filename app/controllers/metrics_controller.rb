@@ -1,5 +1,6 @@
 class MetricsController < ApplicationController
   before_action :set_metric, only: [:show, :update, :destroy]
+  before_action :authorize, except: [:create]
 
   # GET /metrics
   def index
@@ -14,14 +15,19 @@ class MetricsController < ApplicationController
   end
 
   # POST /metrics
-  def create
-    @metric = Metric.new(metric_params)
+  # def create
+  #   @metric = Metric.new(metric_params)
 
-    if @metric.save
-      render json: @metric, status: :created, location: @metric
-    else
-      render json: @metric.errors, status: :unprocessable_entity
-    end
+  #   if @metric.save
+  #     render json: @metric, status: :created, location: @metric
+  #   else
+  #     render json: @metric.errors, status: :unprocessable_entity
+  #   end
+  # end
+
+  def create
+    metric = Metric.create!(metric_params)
+    render json: metric, status: :created
   end
 
   # PATCH/PUT /metrics/1
