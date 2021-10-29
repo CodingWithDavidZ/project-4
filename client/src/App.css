@@ -164,15 +164,34 @@
 ul {
   list-style-type: none;
   margin: 0;
-  padding-bottom: 15px;
   overflow: hidden;
   padding-left: 0px;
   margin: 0px;
+  padding-bottom: 5px;
+}
+
+li {
+  text-align: left;
 }
 
 .user_metric_box {
+  border: 5px solid;
+  border-radius: 25px;
+  width: 35%;
+  margin: auto;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  background-color: #f58b00;
+}
+
+#member_name {
+  background-color: #2f2963;
+  width: 35%;
+  border: 5px solid;
+  border-radius: 25px;
+  color: #dceab2;
+  font-weight: bold;
+  margin: auto;
 }
