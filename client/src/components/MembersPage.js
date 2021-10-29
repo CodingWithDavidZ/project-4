@@ -81,6 +81,9 @@ function MembersPage({ memberUrl }) {
                 {created}
               </li>
             </ul>
+            <button className='remove_metric' id={user.id}>
+              ❌
+            </button>
           </div>
         </>
       );
