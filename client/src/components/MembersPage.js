@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 function MembersPage({ memberUrl }) {
   const [userData, setUserData] = useState({ metrics: [] });
+  const [removed, setRemoved] = useState(false);
 
   function handleClick(e) {
     fetch(`/metrics/${e.target.value}`, { method: 'DELETE' });
@@ -10,6 +11,7 @@ function MembersPage({ memberUrl }) {
         (metric) => metric.id !== e.target.value
       ),
     });
+    setRemoved(true);
   }
 
   useEffect(() => {
@@ -18,7 +20,7 @@ function MembersPage({ memberUrl }) {
       .then((data) => {
         setUserData(data);
       });
-  }, []);
+  }, [removed]);
 
   const userMetrics = userData.metrics.map((user) => {
     const created = user.created_at.split('T')[0];
@@ -37,55 +39,95 @@ function MembersPage({ memberUrl }) {
     } else {
       return (
         <>
-          <div className='user_metric_box' id={user.id}>
-            <ul id={user.id} className='metric_ul'>
+          <div className='user_metric_box' id={userData.metrics.id}>
+            <ul key={userData.metrics.id} className='metric_ul'>
               {user.chest_size ? (
-                <li className='chest' id={`chest${user.id}`}>
+                <li
+                  className='chest'
+                  id={`chest${user.id}`}
+                  key={`chest ${userData.metrics.id}`}
+                >
                   <strong>Chest diameter:</strong> {user.chest_size}in
                 </li>
               ) : null}
               {user.waist_size ? (
-                <li className='waist' id={user.id}>
+                <li
+                  className='waist'
+                  id={user.id}
+                  key={`waist${userData.metrics.id}`}
+                >
                   <strong>Waist diameter:</strong> {user.waist_size}in
                 </li>
               ) : null}
               {user.hip_size ? (
-                <li className='hip' id={user.id}>
+                <li
+                  className='hip'
+                  id={user.id}
+                  key={`hip${userData.metrics.id}`}
+                >
                   <strong>Hip diameter:</strong> {user.hip_size}in
                 </li>
               ) : null}
               {user.thigh_size ? (
-                <li className='thigh' id={user.id}>
+                <li
+                  className='thigh'
+                  id={user.id}
+                  key={`thigh${userData.metrics.id}`}
+                >
                   <strong>Thigh diameter:</strong> {user.thigh_size}in
                 </li>
               ) : null}
               {user.calf_size ? (
-                <li className='calf' id={user.id}>
+                <li
+                  className='calf'
+                  id={user.id}
+                  key={`calf${userData.metrics.id}`}
+                >
                   <strong>Calf diameter:</strong> {user.calf_size}in
                 </li>
               ) : null}
               {user.bicep_size ? (
-                <li className='bicep' id={user.id}>
+                <li
+                  className='bicep'
+                  id={user.id}
+                  key={`bicep${userData.metrics.id}`}
+                >
                   <strong>Bicep diameter:</strong> {user.bicep_size}in
                 </li>
               ) : null}
               {user.forearm_size ? (
-                <li className='forearm' id={user.id}>
+                <li
+                  className='forearm'
+                  id={user.id}
+                  key={`forearm${userData.metrics.id}`}
+                >
                   <strong>Forearm diameter:</strong> {user.forearm_size}in
                 </li>
               ) : null}
               {user.height_feet ? (
-                <li className='height' id={user.id}>
+                <li
+                  className='height'
+                  id={user.id}
+                  key={`height${userData.metrics.id}`}
+                >
                   <strong>Height:</strong> {user.height_feet}'{' '}
                   {user.height_inches}"
                 </li>
               ) : null}
               {user.weight_lbs ? (
-                <li className='weight' id={user.id}>
+                <li
+                  className='weight'
+                  id={user.id}
+                  key={`weight${userData.metrics.id}`}
+                >
                   <strong>Weight:</strong> {user.weight_lbs}lbs
                 </li>
               ) : null}
-              <li className='created' id={user.id}>
+              <li
+                className='created'
+                id={user.id}
+                key={`created${userData.metrics.id}`}
+              >
                 <strong>Created:</strong>
                 {created}
               </li>
@@ -109,7 +151,16 @@ function MembersPage({ memberUrl }) {
       <div id='member_name'>
         Member:{userData.first_name} {userData.last_name}
       </div>
-      {userMetrics}
+      {removed ? (
+        <div className='removed_metric_box'>
+          Metric Removed! &nbsp;
+          <button className='remove_metric' onClick={() => setRemoved(false)}>
+            OK{' '}
+          </button>
+        </div>
+      ) : (
+        userMetrics
+      )}
     </div>
   );
 }

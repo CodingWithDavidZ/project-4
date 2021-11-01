@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 function Login({ loginUrl, setUser }) {
-  const [isLoading, setIsLoading] = useState(false);
   const [input, setInput] = useState({
     username: '',
     password: '',
@@ -15,7 +14,6 @@ function Login({ loginUrl, setUser }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    setIsLoading(true);
     fetch(`${loginUrl}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -24,10 +22,9 @@ function Login({ loginUrl, setUser }) {
         password: input.password,
       }),
     }).then((res) => {
-      setIsLoading(false);
       if (res.ok) {
         res.json().then((user) => setUser(user));
-        window.location.href = '/';
+        window.location.href = '/measurements';
       } else {
         setInput({
           username: '',

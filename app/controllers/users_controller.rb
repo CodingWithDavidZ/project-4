@@ -15,12 +15,10 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user.update(user_params)
-      session[:user_id] = user.id
-      render json: @user
-    else
-      render json: @user.errors, status: :unprocessable_entity
-    end
+    user = User.find(params[:id])
+    user.update!(password: params[:password])
+
+    render json: user, status: :ok
   end
 
 

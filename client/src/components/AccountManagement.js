@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function AccountManagement({ user, setUser }) {
+function AccountManagement({ user }) {
   const [editPassword, setEditPassword] = useState(false);
   const [input, setInput] = useState({
     user: user.id,
@@ -38,14 +38,16 @@ function AccountManagement({ user, setUser }) {
   }
 
   return (
-    <div>
+    <div id='wrapper'>
       <div>
         Welcome {user.first_name} {user.last_name}
       </div>
       {!editPassword ? (
         <span>
           <h3>Change password?</h3>
-          <button onClick={handleClick}>Yes!</button>
+          <button id='change_password_button' onClick={handleClick}>
+            Yes!
+          </button>
         </span>
       ) : (
         <form autocomplete='off' onSubmit={handleSubmit}>
