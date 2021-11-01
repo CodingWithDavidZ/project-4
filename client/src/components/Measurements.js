@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Redirect, Link } from 'react-router-dom';
 
 function Measurements({ metricsUrl, user }) {
@@ -28,38 +28,53 @@ function Measurements({ metricsUrl, user }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    fetch(`${metricsUrl}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        chest_size: input.chest_size,
-        waist_size: input.waist_size,
-        hip_size: input.hip_size,
-        thigh_size: input.thigh_size,
-        calf_size: input.calf_size,
-        bicep_size: input.bicep_size,
-        forearm_size: input.forearm_size,
-        height_feet: input.height_feet,
-        height_inches: input.height_inches,
-        weight_lbs: input.weight_lbs,
-        user_id: user.id,
-      }),
-    }).then(() => {
-      setInput({
-        chest_size: '',
-        waist_size: '',
-        hip_size: '',
-        thigh_size: '',
-        calf_size: '',
-        bicep_size: '',
-        forearm_size: '',
-        height_feet: '',
-        height_inches: '',
-        weight_lbs: '',
-        user_id: user.id,
+    if (
+      input.chest_size ||
+      input.waist_size ||
+      input.hip_size ||
+      input.thigh_size ||
+      input.calf_size ||
+      input.bicep_size ||
+      input.forearm_size ||
+      input.height_feet ||
+      input.height_inches ||
+      input.weight_lbs
+    ) {
+      fetch(`${metricsUrl}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          chest_size: input.chest_size,
+          waist_size: input.waist_size,
+          hip_size: input.hip_size,
+          thigh_size: input.thigh_size,
+          calf_size: input.calf_size,
+          bicep_size: input.bicep_size,
+          forearm_size: input.forearm_size,
+          height_feet: input.height_feet,
+          height_inches: input.height_inches,
+          weight_lbs: input.weight_lbs,
+          user_id: user.id,
+        }),
+      }).then(() => {
+        setInput({
+          chest_size: '',
+          waist_size: '',
+          hip_size: '',
+          thigh_size: '',
+          calf_size: '',
+          bicep_size: '',
+          forearm_size: '',
+          height_feet: '',
+          height_inches: '',
+          weight_lbs: '',
+          user_id: user.id,
+        });
       });
-    });
-    setSubmitted(true);
+      setSubmitted(true);
+    } else {
+      alert('Please fill out at least one field');
+    }
   }
 
   if (submitted) return <Redirect to='/memberspage' />;

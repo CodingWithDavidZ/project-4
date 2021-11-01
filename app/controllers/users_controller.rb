@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authorize, except: :create
+  before_action :authorize, except: [:create, :update]
 
 
   # GET /users/1
@@ -12,6 +12,15 @@ class UsersController < ApplicationController
     user = User.create!(user_params)
     session[:user_id] = user.id
     render json: user, status: :created
+  end
+
+  def update
+    if @user.update(user_params)
+      session[:user_id] = user.id
+      render json: @user
+    else
+      render json: @user.errors, status: :unprocessable_entity
+    end
   end
 
 

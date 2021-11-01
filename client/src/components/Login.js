@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-function Login({ apiURL }) {
+function Login({ loginUrl, setUser }) {
+  const [isLoading, setIsLoading] = useState(false);
   const [input, setInput] = useState({
     username: '',
     password: '',
@@ -14,25 +15,32 @@ function Login({ apiURL }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    fetch(`${apiURL}`, {
+    setIsLoading(true);
+    fetch(`${loginUrl}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         username: input.username,
         password: input.password,
       }),
-    }).then(() => {
-      setInput({
-        username: '',
-        password: '',
-      });
+    }).then((res) => {
+      setIsLoading(false);
+      if (res.ok) {
+        res.json().then((user) => setUser(user));
+        window.location.href = '/';
+      } else {
+        setInput({
+          username: '',
+          password: '',
+        });
+      }
     });
   }
 
   return (
     <div id='login_box'>
       <h1>Login</h1>
-      <form id='user_login' autocomplete='off' onsubmit={handleSubmit}>
+      <form id='user_login' autocomplete='off' onSubmit={handleSubmit}>
         <h4 className='login_descriptor'>Username</h4>
         <input
           required
@@ -56,15 +64,16 @@ function Login({ apiURL }) {
           placeholder='Password'
           onChange={handleLogin}
         />
+        <br />
+        <span>
+          <button id='sign_in_button' onclick={handleSubmit}>
+            Sign In
+          </button>
+          <Link id='sign_up' to='/signup'>
+            Sign Up
+          </Link>
+        </span>
       </form>
-      <span>
-        <button id='sign_in_button' onclick={handleSubmit}>
-          Sign In
-        </button>
-        <Link id='sign_up' to='/signup'>
-          Sign Up
-        </Link>
-      </span>
     </div>
   );
 }

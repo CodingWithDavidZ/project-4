@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Measurements from './Measurements';
-import { Redirect } from 'react-router-dom';
 
 function SignUp({ signUpUrl, user, onLogin, metricsUrl }) {
   const [input, setInput] = useState({

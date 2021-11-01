@@ -3,6 +3,15 @@ import React, { useEffect, useState } from 'react';
 function MembersPage({ memberUrl }) {
   const [userData, setUserData] = useState({ metrics: [] });
 
+  function handleClick(e) {
+    fetch(`/metrics/${e.target.value}`, { method: 'DELETE' });
+    setUserData({
+      metrics: userData.metrics.filter(
+        (metric) => metric.id !== e.target.value
+      ),
+    });
+  }
+
   useEffect(() => {
     fetch(`${memberUrl}`)
       .then((response) => response.json())
@@ -81,7 +90,12 @@ function MembersPage({ memberUrl }) {
                 {created}
               </li>
             </ul>
-            <button className='remove_metric' id={user.id}>
+            <button
+              className='remove_metric'
+              id={user.id}
+              value={user.id}
+              onClick={handleClick}
+            >
               ❌
             </button>
           </div>
