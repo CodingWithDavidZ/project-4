@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 
-function MembersPage({ memberUrl }) {
+function MembersPage({ memberUrl, metricsUrl }) {
   const [userData, setUserData] = useState({ metrics: [] });
   const [removed, setRemoved] = useState(false);
 
   function handleClick(e) {
-    fetch(`/metrics/${e.target.value}`, { method: 'DELETE' });
+    fetch(`${metricsUrl}${e.target.value}`, { method: 'DELETE' });
     setUserData({
       metrics: userData.metrics.filter(
         (metric) => metric.id !== e.target.value
@@ -47,7 +47,7 @@ function MembersPage({ memberUrl }) {
                   id={`chest${user.id}`}
                   key={`chest ${userData.metrics.id}`}
                 >
-                  <strong>Chest diameter:</strong> {user.chest_size}in
+                  <strong>Chest circumference:</strong> {user.chest_size}in
                 </li>
               ) : null}
               {user.waist_size ? (
@@ -56,7 +56,7 @@ function MembersPage({ memberUrl }) {
                   id={user.id}
                   key={`waist${userData.metrics.id}`}
                 >
-                  <strong>Waist diameter:</strong> {user.waist_size}in
+                  <strong>Waist circumference:</strong> {user.waist_size}in
                 </li>
               ) : null}
               {user.hip_size ? (
@@ -65,7 +65,7 @@ function MembersPage({ memberUrl }) {
                   id={user.id}
                   key={`hip${userData.metrics.id}`}
                 >
-                  <strong>Hip diameter:</strong> {user.hip_size}in
+                  <strong>Hip circumference:</strong> {user.hip_size}in
                 </li>
               ) : null}
               {user.thigh_size ? (
@@ -74,7 +74,7 @@ function MembersPage({ memberUrl }) {
                   id={user.id}
                   key={`thigh${userData.metrics.id}`}
                 >
-                  <strong>Thigh diameter:</strong> {user.thigh_size}in
+                  <strong>Thigh circumference:</strong> {user.thigh_size}in
                 </li>
               ) : null}
               {user.calf_size ? (
@@ -83,7 +83,7 @@ function MembersPage({ memberUrl }) {
                   id={user.id}
                   key={`calf${userData.metrics.id}`}
                 >
-                  <strong>Calf diameter:</strong> {user.calf_size}in
+                  <strong>Calf circumference:</strong> {user.calf_size}in
                 </li>
               ) : null}
               {user.bicep_size ? (
@@ -92,7 +92,7 @@ function MembersPage({ memberUrl }) {
                   id={user.id}
                   key={`bicep${userData.metrics.id}`}
                 >
-                  <strong>Bicep diameter:</strong> {user.bicep_size}in
+                  <strong>Bicep circumference:</strong> {user.bicep_size}in
                 </li>
               ) : null}
               {user.forearm_size ? (
@@ -101,7 +101,7 @@ function MembersPage({ memberUrl }) {
                   id={user.id}
                   key={`forearm${userData.metrics.id}`}
                 >
-                  <strong>Forearm diameter:</strong> {user.forearm_size}in
+                  <strong>Forearm circumference:</strong> {user.forearm_size}in
                 </li>
               ) : null}
               {user.height_feet ? (

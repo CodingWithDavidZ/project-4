@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-function AccountManagement({ user }) {
+function AccountManagement({ user, userUrl }) {
   const [editPassword, setEditPassword] = useState(false);
+  const navigate = useNavigate();
   const [input, setInput] = useState({
     user: user.id,
     password: '',
@@ -18,7 +20,7 @@ function AccountManagement({ user }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    fetch(`/users/${user.id}`, {
+    fetch(`${userUrl}${user.id}`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -28,7 +30,7 @@ function AccountManagement({ user }) {
     }).then((res) => {
       if (res.ok) {
         // res.json().then((user) => setUser(user));
-        window.location.href = '/memberspage';
+        navigate('/memberspage');
       } else {
         setInput({
           password: '',
@@ -38,9 +40,12 @@ function AccountManagement({ user }) {
   }
 
   return (
-    <div id='wrapper'>
+    <div id='manage_account_box'>
       <div>
-        Welcome {user.first_name} {user.last_name}
+        Welcome:{' '}
+        <strong>
+          {user.first_name} {user.last_name}
+        </strong>
       </div>
       {!editPassword ? (
         <span>

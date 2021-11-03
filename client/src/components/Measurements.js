@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Redirect, Link } from 'react-router-dom';
+import { Navigate, Link } from 'react-router-dom';
 
 function Measurements({ metricsUrl, user }) {
   const [input, setInput] = useState({
@@ -18,8 +18,8 @@ function Measurements({ metricsUrl, user }) {
 
   const [submitted, setSubmitted] = useState(false);
 
-  console.log(user);
-  console.log(input);
+  console.log('Measurements.js user', user);
+  console.log('Measurements.js input', input);
 
   const handleChange = (e) => {
     let attr = e.target.name;
@@ -77,7 +77,7 @@ function Measurements({ metricsUrl, user }) {
     }
   }
 
-  if (submitted) return <Redirect to='/memberspage' />;
+  if (submitted) return <Navigate to='/memberspage' />;
 
   return (
     <>
@@ -88,7 +88,7 @@ function Measurements({ metricsUrl, user }) {
         <h1 id='measurements_text'>Measurements</h1>
         <form id='measurement_form' autoComplete='off' onSubmit={handleSubmit}>
           <h4 className='measurements_descriptor'>
-            What's the diameter of your chest in inches?
+            Circumference of chest in inches?
           </h4>
           <input
             value={input.chest_size}
@@ -102,7 +102,7 @@ function Measurements({ metricsUrl, user }) {
           />
           <br />
           <h4 className='measurements_descriptor'>
-            What's the diameter of your waist in inches?
+            Circumference of waist in inches?
           </h4>
           <input
             value={input.waist_size}
@@ -116,7 +116,7 @@ function Measurements({ metricsUrl, user }) {
           />
           <br />
           <h4 className='measurements_descriptor'>
-            What's the diameter of your hips in inches?
+            Circumference of hips in inches?
           </h4>
           <input
             value={input.hips_size}
@@ -130,7 +130,7 @@ function Measurements({ metricsUrl, user }) {
           />
           <br />
           <h4 className='measurements_descriptor'>
-            What's the diameter of your thighs in inches?
+            Circumference of thighs in inches?
           </h4>
           <input
             value={input.thigh_size}
@@ -144,7 +144,7 @@ function Measurements({ metricsUrl, user }) {
           />
           <br />
           <h4 className='measurements_descriptor'>
-            What's the diameter of your calf in inches?
+            Circumference of calf in inches?
           </h4>
           <input
             value={input.calf_size}
@@ -158,7 +158,7 @@ function Measurements({ metricsUrl, user }) {
           />
           <br />
           <h4 className='measurements_descriptor'>
-            What's the diameter of your bicep in inches?
+            Circumference of bicep in inches?
           </h4>
           <input
             value={input.bicep_size}
@@ -172,7 +172,7 @@ function Measurements({ metricsUrl, user }) {
           />
           <br />
           <h4 className='measurements_descriptor'>
-            What's the diameter of your forearm in inches?
+            Circumference of forearm in inches?
           </h4>
           <input
             value={input.forearm_size}

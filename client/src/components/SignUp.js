@@ -44,9 +44,10 @@ function SignUp({ signUpUrl, user, onLogin, metricsUrl }) {
           password: '',
         });
       });
+    console.log('SignUp.js user', user);
   }
 
-  if (user) return <Measurements metricsUrl={metricsUrl} user={user} />;
+  if (user.id) return <Measurements metricsUrl={metricsUrl} user={user} />;
 
   return (
     <div id='sign_up_box'>

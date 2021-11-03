@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
-function Login({ loginUrl, setUser }) {
+function Login({ loginUrl, setUser, user }) {
+  const navigate = useNavigate();
   const [input, setInput] = useState({
     username: '',
     password: '',
@@ -24,7 +25,7 @@ function Login({ loginUrl, setUser }) {
     }).then((res) => {
       if (res.ok) {
         res.json().then((user) => setUser(user));
-        window.location.href = '/measurements';
+        navigate('/measurements');
       } else {
         setInput({
           username: '',
@@ -32,6 +33,7 @@ function Login({ loginUrl, setUser }) {
         });
       }
     });
+    console.log('Login.js user', user);
   }
 
   return (

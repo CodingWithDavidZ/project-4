@@ -1,13 +1,21 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
-function Header({ setUser, logOutUrl }) {
-  function handleLogout() {
-    fetch(`${logOutUrl}`, { method: 'DELETE' }).then((r) => {
+function Header({ setUser, logOutUrl, user }) {
+  const navigate = useNavigate();
+  // function navigateToHome() {
+  //   history.push('/');
+  // }
+
+  async function handleLogout() {
+    await fetch(`${logOutUrl}`, { method: 'DELETE' }).then((r) => {
       if (r.ok) {
         setUser(null);
+        // navigateToHome();
+        navigate('/');
       }
     });
+    console.log('Empty user check', user);
   }
 
   return (
@@ -15,14 +23,13 @@ function Header({ setUser, logOutUrl }) {
       <Link className='header_link' to='/accountmanagement'>
         Manage Account
       </Link>
-      <Link
+      <button
         className='header_link'
         id='log_out_button'
         onClick={handleLogout}
-        to='/'
       >
         Sign Out
-      </Link>
+      </button>
     </div>
   );
 }
