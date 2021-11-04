@@ -27,7 +27,7 @@ function Measurements({ metricsUrl, user }) {
     setInput({ ...input, [attr]: e.target.value });
   };
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
     if (
       input.neck_size ||
@@ -42,7 +42,7 @@ function Measurements({ metricsUrl, user }) {
       input.height_inches ||
       input.weight_lbs
     ) {
-      fetch(`${metricsUrl}`, {
+      await fetch(`${metricsUrl}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
