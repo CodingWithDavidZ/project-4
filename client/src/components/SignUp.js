@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import Measurements from './Measurements';
+import { useNavigate } from 'react-router-dom';
 
 function SignUp({ signUpUrl, user, onLogin, metricsUrl }) {
+  const navigate = useNavigate();
   const [input, setInput] = useState({
     first_name: '',
     last_name: '',
@@ -43,11 +45,12 @@ function SignUp({ signUpUrl, user, onLogin, metricsUrl }) {
           username: '',
           password: '',
         });
+        navigate('/measurements');
       });
     console.log('SignUp.js user', user);
   }
 
-  if (user.id) return <Measurements metricsUrl={metricsUrl} user={user} />;
+  // if (user.id) return <Measurements metricsUrl={metricsUrl} user={user} />;
 
   return (
     <div id='sign_up_box'>

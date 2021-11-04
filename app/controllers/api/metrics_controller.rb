@@ -11,26 +11,26 @@ class Api::MetricsController < ApplicationController
 
   # GET /metrics/1
   def show
-    render json: @metric
+    render json: @metric.order(created_at: :desc)
   end
 
   # POST /metrics
-  # def create
-  #   @metric = Metric.new(metric_params)
+  def create
+    @metric = Metric.new(metric_params)
 
-  #   if @metric.save
-  #     render json: @metric, status: :created, location: @metric
-  #   else
-  #     render json: @metric.errors, status: :unprocessable_entity
-  #   end
-  # end
+    if @metric.save
+      render json: @metric, status: :created, location: @metric
+    else
+      render json: @metric.errors, status: :unprocessable_entity
+    end
+  end
 
   def create
     metric = Metric.create!(metric_params)
-    render json: metric, status: :created
+    render json: metric
   end
 
-  # PATCH/PUT /metrics/1
+  # PATCH /metrics/1
   def update
     if @metric.update(metric_params)
       render json: @metric
@@ -52,6 +52,6 @@ class Api::MetricsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def metric_params
-      params.require(:metric).permit(:chest_size, :waist_size, :hip_size, :thigh_size, :calf_size, :bicep_size, :forearm_size, :height_feet, :height_inches, :weight_lbs, :user_id)
+      params.require(:metric).permit(:neck_size, :chest_size, :waist_size, :hip_size, :thigh_size, :calf_size, :bicep_size, :forearm_size, :height_feet, :height_inches, :weight_lbs, :user_id)
     end
 end

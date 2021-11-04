@@ -61,28 +61,42 @@ function App() {
           <Route
             exact
             path='/measurements'
-            element={<Measurements metricsUrl={metricsUrl} user={user} />}
+            element={
+              user && user.id ? (
+                <Measurements metricsUrl={metricsUrl} user={user} />
+              ) : (
+                <Login loginUrl={loginUrl} setUser={setUser} user={user} />
+              )
+            }
           />
           <Route
             exact
             path='/memberspage'
             element={
-              <>
-                <Header setUser={setUser} user={user} logOutUrl={logOutUrl} />
-                <MembersPage memberUrl={memberUrl} metricsUrl={metricsUrl} />
-              </>
+              user && user.id ? (
+                <>
+                  <Header setUser={setUser} user={user} logOutUrl={logOutUrl} />
+                  <MembersPage memberUrl={memberUrl} metricsUrl={metricsUrl} />
+                </>
+              ) : (
+                <Login loginUrl={loginUrl} setUser={setUser} user={user} />
+              )
             }
           />
           <Route
             exact
             path='/accountmanagement'
             element={
-              <AccountManagement
-                memberUrl={memberUrl}
-                userUrl={userUrl}
-                user={user}
-                setUser={setUser}
-              />
+              user && user.id ? (
+                <AccountManagement
+                  memberUrl={memberUrl}
+                  userUrl={userUrl}
+                  user={user}
+                  setUser={setUser}
+                />
+              ) : (
+                <Login loginUrl={loginUrl} setUser={setUser} user={user} />
+              )
             }
           />
         </Routes>

@@ -3,6 +3,7 @@ import { Navigate, Link } from 'react-router-dom';
 
 function Measurements({ metricsUrl, user }) {
   const [input, setInput] = useState({
+    neck_size: '',
     chest_size: '',
     waist_size: '',
     hip_size: '',
@@ -29,6 +30,7 @@ function Measurements({ metricsUrl, user }) {
   function handleSubmit(e) {
     e.preventDefault();
     if (
+      input.neck_size ||
       input.chest_size ||
       input.waist_size ||
       input.hip_size ||
@@ -44,6 +46,7 @@ function Measurements({ metricsUrl, user }) {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
+          neck_size: input.neck_size,
           chest_size: input.chest_size,
           waist_size: input.waist_size,
           hip_size: input.hip_size,
@@ -58,6 +61,7 @@ function Measurements({ metricsUrl, user }) {
         }),
       }).then(() => {
         setInput({
+          neck_size: '',
           chest_size: '',
           waist_size: '',
           hip_size: '',
@@ -87,6 +91,20 @@ function Measurements({ metricsUrl, user }) {
       <div id='measurements_box'>
         <h1 id='measurements_text'>Measurements</h1>
         <form id='measurement_form' autoComplete='off' onSubmit={handleSubmit}>
+          <h4 className='measurements_descriptor'>
+            Circumference of neck in inches?
+          </h4>
+          <input
+            value={input.neck_size}
+            type='number'
+            step='0.25'
+            className='measurement_fields'
+            id='neck_size_field'
+            name='neck_size'
+            placeholder='Neck size'
+            onChange={handleChange}
+          />
+          <br />
           <h4 className='measurements_descriptor'>
             Circumference of chest in inches?
           </h4>

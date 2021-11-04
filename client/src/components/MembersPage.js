@@ -25,6 +25,7 @@ function MembersPage({ memberUrl, metricsUrl }) {
   const userMetrics = userData.metrics.map((user) => {
     const created = user.created_at.split('T')[0];
     if (
+      !user.neck_size &&
       !user.hips_size &&
       !user.bicep_size &&
       !user.chest_size &&
@@ -41,6 +42,15 @@ function MembersPage({ memberUrl, metricsUrl }) {
         <>
           <div className='user_metric_box' id={userData.metrics.id}>
             <ul key={userData.metrics.id} className='metric_ul'>
+              {user.neck_size ? (
+                <li
+                  className='neck'
+                  id={`neck${user.id}`}
+                  key={`neck ${userData.metrics.id}`}
+                >
+                  <strong>Neck circumference:</strong> {user.neck_size}in
+                </li>
+              ) : null}
               {user.chest_size ? (
                 <li
                   className='chest'

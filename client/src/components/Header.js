@@ -3,9 +3,6 @@ import { Link, useNavigate } from 'react-router-dom';
 
 function Header({ setUser, logOutUrl, user }) {
   const navigate = useNavigate();
-  // function navigateToHome() {
-  //   history.push('/');
-  // }
 
   async function handleLogout() {
     await fetch(`${logOutUrl}`, { method: 'DELETE' }).then((r) => {
