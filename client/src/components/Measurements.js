@@ -18,6 +18,7 @@ function Measurements({ metricsUrl, user }) {
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState({});
 
   console.log('Measurements.js user', user);
   console.log('Measurements.js input', input);
@@ -27,39 +28,87 @@ function Measurements({ metricsUrl, user }) {
     setInput({ ...input, [attr]: e.target.value });
   };
 
+  // async function handleSubmit(e) {
+  //   e.preventDefault();
+  //   if (
+  //     input.neck_size ||
+  //     input.chest_size ||
+  //     input.waist_size ||
+  //     input.hip_size ||
+  //     input.thigh_size ||
+  //     input.calf_size ||
+  //     input.bicep_size ||
+  //     input.forearm_size ||
+  //     input.height_feet ||
+  //     input.height_inches ||
+  //     input.weight_lbs
+  //   ) {
+  //     await fetch(`${metricsUrl}`, {
+  //       method: 'POST',
+  //       headers: { 'Content-Type': 'application/json' },
+  //       body: JSON.stringify({
+  //         neck_size: input.neck_size,
+  //         chest_size: input.chest_size,
+  //         waist_size: input.waist_size,
+  //         hip_size: input.hip_size,
+  //         thigh_size: input.thigh_size,
+  //         calf_size: input.calf_size,
+  //         bicep_size: input.bicep_size,
+  //         forearm_size: input.forearm_size,
+  //         height_feet: input.height_feet,
+  //         height_inches: input.height_inches,
+  //         weight_lbs: input.weight_lbs,
+  //         user_id: user.id,
+  //       }),
+  //     }).then((r) => {
+  //       if (r.ok) {
+  //         setInput({
+  //           neck_size: '',
+  //           chest_size: '',
+  //           waist_size: '',
+  //           hip_size: '',
+  //           thigh_size: '',
+  //           calf_size: '',
+  //           bicep_size: '',
+  //           forearm_size: '',
+  //           height_feet: '',
+  //           height_inches: '',
+  //           weight_lbs: '',
+  //           user_id: user.id,
+  //         });
+  //         setSubmitted(true);
+  //       } else {
+  //         r.json().then((e) => setError(e.errors));
+  //         console.log('error', error);
+  //       }
+  //     });
+  //   } else {
+  //     alert('Please fill out at least one field');
+  //   }
+  // }
+
   async function handleSubmit(e) {
     e.preventDefault();
-    if (
-      input.neck_size ||
-      input.chest_size ||
-      input.waist_size ||
-      input.hip_size ||
-      input.thigh_size ||
-      input.calf_size ||
-      input.bicep_size ||
-      input.forearm_size ||
-      input.height_feet ||
-      input.height_inches ||
-      input.weight_lbs
-    ) {
-      await fetch(`${metricsUrl}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          neck_size: input.neck_size,
-          chest_size: input.chest_size,
-          waist_size: input.waist_size,
-          hip_size: input.hip_size,
-          thigh_size: input.thigh_size,
-          calf_size: input.calf_size,
-          bicep_size: input.bicep_size,
-          forearm_size: input.forearm_size,
-          height_feet: input.height_feet,
-          height_inches: input.height_inches,
-          weight_lbs: input.weight_lbs,
-          user_id: user.id,
-        }),
-      }).then(() => {
+    await fetch(`${metricsUrl}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        neck_size: input.neck_size,
+        chest_size: input.chest_size,
+        waist_size: input.waist_size,
+        hip_size: input.hip_size,
+        thigh_size: input.thigh_size,
+        calf_size: input.calf_size,
+        bicep_size: input.bicep_size,
+        forearm_size: input.forearm_size,
+        height_feet: input.height_feet,
+        height_inches: input.height_inches,
+        weight_lbs: input.weight_lbs,
+        user_id: user.id,
+      }),
+    }).then((r) => {
+      console.log('r', r);
+      if (r.ok) {
         setInput({
           neck_size: '',
           chest_size: '',
@@ -74,14 +123,19 @@ function Measurements({ metricsUrl, user }) {
           weight_lbs: '',
           user_id: user.id,
         });
-      });
-      setSubmitted(true);
-    } else {
-      alert('Please fill out at least one field');
-    }
+        setSubmitted(true);
+      } else {
+        r.json().then((e) => {
+          console.log('e', e);
+          setError(e);
+        });
+      }
+    });
   }
 
-  if (submitted) return <Navigate to='/memberspage' />;
+  if (submitted) {
+    return <Navigate to='/measurements' />;
+  }
 
   return (
     <>
@@ -244,6 +298,9 @@ function Measurements({ metricsUrl, user }) {
           <br />
           <input type='submit' value='Submit' id='submit_measurement_button' />
         </form>
+        <div id='measurement_error_box'>
+          {error && <p id='measurement_error_text'>{error}</p>}
+        </div>
       </div>
     </>
   );

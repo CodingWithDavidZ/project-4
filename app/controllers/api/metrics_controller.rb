@@ -21,14 +21,14 @@ class Api::MetricsController < ApplicationController
     if @metric.save
       render json: @metric, status: :created, location: @metric
     else
-      render json: @metric.errors, status: :unprocessable_entity
+      render json: @metric.errors.full_messages, status: :unprocessable_entity
     end
   end
 
-  def create
-    metric = Metric.create!(metric_params)
-    render json: metric
-  end
+  # def create
+  #   metric = Metric.create!(metric_params)
+  #   render json: metric
+  # end
 
   # PATCH /metrics/1
   def update
