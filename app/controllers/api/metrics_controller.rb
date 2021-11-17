@@ -19,7 +19,7 @@ class Api::MetricsController < ApplicationController
     @metric = Metric.new(metric_params)
 
     if @metric.save
-      render json: @metric, status: :created, location: @metric
+      render json: @metric, status: :created
     else
       render json: @metric.errors.full_messages, status: :unprocessable_entity
     end
