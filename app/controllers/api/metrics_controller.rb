@@ -1,6 +1,6 @@
 class Api::MetricsController < ApplicationController
-  before_action :set_metric, only: [:show, :update, :destroy]
-  before_action :authorize, except: [:create]
+  before_action :set_metric, only: [:show, :update, :destroy, :size]
+  before_action :authorize, except: [:create, :size]
 
   # GET /metrics
   def index
@@ -25,10 +25,17 @@ class Api::MetricsController < ApplicationController
     end
   end
 
-  # def create
-  #   metric = Metric.create!(metric_params)
-  #   render json: metric
-  # end
+ # metrics/id/size
+
+  def size
+    adjust = params[:size]
+      @metric.adjust_neck_size(adjust)
+    if @metric.valid?   
+      render json: @metric, status: :ok
+    else
+      render json: @metric.errors.full_messages, status: :unprocessable_entity
+    end
+  end
 
   # PATCH /metrics/1
   def update
@@ -54,4 +61,7 @@ class Api::MetricsController < ApplicationController
     def metric_params
       params.require(:metric).permit(:neck_size, :chest_size, :waist_size, :hip_size, :thigh_size, :calf_size, :bicep_size, :forearm_size, :height_feet, :height_inches, :weight_lbs, :user_id)
     end
+
+    
+
 end

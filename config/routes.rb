@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
   namespace :api do
+
+    post "/metrics/:id/size", to: "metrics#size"
     resources :metrics
     resources :users, only: [ :index, :create, :update]
 
+
+    
     post "/signup", to: "users#create"
     get "/me", to: "users#show"
     post "/login", to: "sessions#create"

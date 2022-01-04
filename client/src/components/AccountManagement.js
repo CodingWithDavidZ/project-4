@@ -55,7 +55,7 @@ function AccountManagement({ user, userUrl }) {
           </button>
         </span>
       ) : (
-        <form autocomplete='off' onSubmit={handleSubmit}>
+        <form autoComplete='off' onSubmit={handleSubmit}>
           <input
             required
             value={input.password}
@@ -66,7 +66,7 @@ function AccountManagement({ user, userUrl }) {
             placeholder='New Password'
             onChange={handleChange}
           />
-          <button id='change_password_button' onclick={handleSubmit}>
+          <button id='change_password_button' onClick={handleSubmit}>
             Change
           </button>
         </form>

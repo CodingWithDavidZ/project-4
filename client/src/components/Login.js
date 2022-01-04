@@ -39,7 +39,7 @@ function Login({ loginUrl, setUser, user }) {
   return (
     <div id='login_box'>
       <h1>Login</h1>
-      <form id='user_login' autocomplete='off' onSubmit={handleSubmit}>
+      <form id='user_login' autoComplete='off' onSubmit={handleSubmit}>
         <h4 className='login_descriptor'>Username</h4>
         <input
           required
@@ -65,7 +65,7 @@ function Login({ loginUrl, setUser, user }) {
         />
         <br />
         <span>
-          <button id='sign_in_button' onclick={handleSubmit}>
+          <button id='sign_in_button' onClick={handleSubmit}>
             Sign In
           </button>
           <Link id='sign_up' to='/signup'>

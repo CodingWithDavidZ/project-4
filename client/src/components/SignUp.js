@@ -55,7 +55,7 @@ function SignUp({ signUpUrl, user, onLogin, metricsUrl }) {
   return (
     <div id='sign_up_box'>
       <h1 id='join_text'>Join</h1>
-      <form id='sign_up_form' autocomplete='off' onSubmit={handleSubmit}>
+      <form id='sign_up_form' autoComplete='off' onSubmit={handleSubmit}>
         <h4 className='sign_up_descriptor'>First name</h4>
         <input
           required
