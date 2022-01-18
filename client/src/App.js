@@ -6,7 +6,7 @@ import Login from './components/Login';
 import SignUp from './components/SignUp';
 import Measurements from './components/Measurements';
 import Header from './components/Header';
-import MembersPage2 from './components/MembersPage2';
+import MembersPage from './components/MembersPage';
 import AccountManagement from './components/AccountManagement';
 
 const loginUrl = '/api/login';
@@ -76,7 +76,7 @@ function App() {
 							user && user.id ? (
 								<>
 									<Header setUser={setUser} user={user} logOutUrl={logOutUrl} />
-									<MembersPage2 memberUrl={memberUrl} metricsUrl={metricsUrl} />
+									<MembersPage memberUrl={memberUrl} metricsUrl={metricsUrl} />
 								</>
 							) : (
 								<Login loginUrl={loginUrl} setUser={setUser} user={user} />
