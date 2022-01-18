@@ -84,6 +84,7 @@ function MembersPage({ memberUrl, metricsUrl }) {
 export default MembersPage;
 
 function Metric({ metric, removeMetric }) {
+  //TODO make a map function to check for nil values
   const metrics = {
     neck_size: (
       <>
@@ -148,9 +149,9 @@ function Metric({ metric, removeMetric }) {
     ),
   };
 
-  const metricType = Object.keys(metric).find(
-    (k) => k !== 'id' && metric[k] !== null
-  );
+  // const metricType = Object.keys(metric).find(
+  //   (k) => k !== 'id' && metric[k] !== null
+  // );
 
   const created = metric.created_at.split('T')[0];
 
@@ -158,7 +159,12 @@ function Metric({ metric, removeMetric }) {
     <>
       <div className='user_metric_box' id={metric.id}>
         <ul key={metric.id} className='metric_ul'>
-          {metrics[metricType]}
+          {
+            metrics[
+              //find all objects with a key that is not null
+              Object.keys(metric).find((k) => k !== 'id' && metric[k] !== null)
+            ]
+          }
 
           {metric.height_feet ? (
             <li className='height' id={metric.id} key={`height${metric.id}`}>

@@ -6,7 +6,7 @@ import Login from './components/Login';
 import SignUp from './components/SignUp';
 import Measurements from './components/Measurements';
 import Header from './components/Header';
-import MembersPage from './components/MembersPage';
+import MembersPage2 from './components/MembersPage2';
 import AccountManagement from './components/AccountManagement';
 
 const loginUrl = '/api/login';
@@ -17,92 +17,92 @@ const memberUrl = '/api/me';
 const userUrl = '/api/users/';
 
 function App() {
-  const [user, setUser] = useState({});
+	const [user, setUser] = useState({});
 
-  useEffect(() => {
-    // auto-login
-    fetch(`${memberUrl}`).then((r) => {
-      if (r.ok) {
-        r.json().then((user) => setUser(user));
-      }
-    });
-  }, []);
+	useEffect(() => {
+		// auto-login
+		fetch(`${memberUrl}`).then((r) => {
+			if (r.ok) {
+				r.json().then((user) => setUser(user));
+			}
+		});
+	}, []);
 
-  console.log('app.js user', user);
+	console.log('app.js user', user);
 
-  return (
-    <div className='App'>
-      <Router>
-        <Routes>
-          <Route
-            exact
-            path='/'
-            element={
-              user && user.id ? (
-                <Measurements user={user} metricsUrl={metricsUrl} />
-              ) : (
-                <Login loginUrl={loginUrl} setUser={setUser} user={user} />
-              )
-            }
-          />
+	return (
+		<div className='App'>
+			<Router>
+				<Routes>
+					<Route
+						exact
+						path='/'
+						element={
+							user && user.id ? (
+								<Measurements user={user} metricsUrl={metricsUrl} />
+							) : (
+								<Login loginUrl={loginUrl} setUser={setUser} user={user} />
+							)
+						}
+					/>
 
-          <Route
-            exact
-            path='/signup'
-            element={
-              <SignUp
-                signUpUrl={signUpUrl}
-                user={user}
-                onLogin={setUser}
-                metricsUrl={metricsUrl}
-              />
-            }
-          />
-          <Route
-            exact
-            path='/measurements'
-            element={
-              user && user.id ? (
-                <Measurements metricsUrl={metricsUrl} user={user} />
-              ) : (
-                <Login loginUrl={loginUrl} setUser={setUser} user={user} />
-              )
-            }
-          />
-          <Route
-            exact
-            path='/memberspage'
-            element={
-              user && user.id ? (
-                <>
-                  <Header setUser={setUser} user={user} logOutUrl={logOutUrl} />
-                  <MembersPage memberUrl={memberUrl} metricsUrl={metricsUrl} />
-                </>
-              ) : (
-                <Login loginUrl={loginUrl} setUser={setUser} user={user} />
-              )
-            }
-          />
-          <Route
-            exact
-            path='/accountmanagement'
-            element={
-              user && user.id ? (
-                <AccountManagement
-                  memberUrl={memberUrl}
-                  userUrl={userUrl}
-                  user={user}
-                  setUser={setUser}
-                />
-              ) : (
-                <Login loginUrl={loginUrl} setUser={setUser} user={user} />
-              )
-            }
-          />
-        </Routes>
-      </Router>
-    </div>
-  );
+					<Route
+						exact
+						path='/signup'
+						element={
+							<SignUp
+								signUpUrl={signUpUrl}
+								user={user}
+								onLogin={setUser}
+								metricsUrl={metricsUrl}
+							/>
+						}
+					/>
+					<Route
+						exact
+						path='/measurements'
+						element={
+							user && user.id ? (
+								<Measurements metricsUrl={metricsUrl} user={user} />
+							) : (
+								<Login loginUrl={loginUrl} setUser={setUser} user={user} />
+							)
+						}
+					/>
+					<Route
+						exact
+						path='/memberspage'
+						element={
+							user && user.id ? (
+								<>
+									<Header setUser={setUser} user={user} logOutUrl={logOutUrl} />
+									<MembersPage2 memberUrl={memberUrl} metricsUrl={metricsUrl} />
+								</>
+							) : (
+								<Login loginUrl={loginUrl} setUser={setUser} user={user} />
+							)
+						}
+					/>
+					<Route
+						exact
+						path='/accountmanagement'
+						element={
+							user && user.id ? (
+								<AccountManagement
+									memberUrl={memberUrl}
+									userUrl={userUrl}
+									user={user}
+									setUser={setUser}
+								/>
+							) : (
+								<Login loginUrl={loginUrl} setUser={setUser} user={user} />
+							)
+						}
+					/>
+				</Routes>
+			</Router>
+		</div>
+	);
 }
 
 export default App;
