@@ -28,22 +28,22 @@ The front-end can be accessed at [localhost:4000](localhost:4000)
 
 ## Usage
 
-Login:
+### Login:
 
 ![](https://i.imgur.com/8smOeai.png)
 
----or---
+#### ---or---
 
-Sign up:
+### Sign up:
 
 ![](https://i.imgur.com/gTiKuWw.png)
 
-Enter your metrics:
+### Enter your metrics:
 
 ![](https://i.imgur.com/6nSD0qJ.png)
 _You can use the skip button if you just want to see your metrics_
 
-See your Entries:
+### See your Entries:
 
 ![](https://i.imgur.com/EZbm9WS.png)
 
