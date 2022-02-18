@@ -40,7 +40,8 @@ The front-end can be accessed at [localhost:4000](localhost:4000)
 
 ### Enter your metrics:
 
-![](https://i.imgur.com/6nSD0qJ.png)
+![test](https://i.imgur.com/6nSD0qJ.png)
+
 _You can use the skip button if you just want to see your metrics_
 
 ### See your Entries:
