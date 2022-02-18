@@ -3,6 +3,7 @@
 ![](https://i.imgur.com/0L4QuNX.png)
 
 Metric Tracker is a utility to help people keep track of important body metrics over time
+
 ![GitHub language count](https://img.shields.io/github/languages/count/CodingWithDavidZ/project-4?style=plastic) ![GitHub top language](https://img.shields.io/github/languages/top/CodingWithDavidZ/project-4?style=plastic) ![Lines of code](https://img.shields.io/tokei/lines/github/CodingWithDavidZ/project-4?label=Lines%20of%20code&style=plastic) ![GitHub last commit](https://img.shields.io/github/last-commit/CodingWithDavidZ/project-4?style=plastic)
 
 ## Installation
