@@ -20,15 +20,15 @@ class Api::MetricsController < ApplicationController
 
 	# metrics/id/size
 	#! Will need to uncomment code block in models/metric.rb
-	# def size
-	#   adjust = params[:size]
-	#     @metric.adjust_neck_size(adjust)
-	#   if @metric.valid?
-	#     render json: @metric, status: :ok
-	#   else
-	#     render json: @metric.errors.full_messages, status: :unprocessable_entity
-	#   end
-	# end
+	def size
+		adjust = params[:size]
+		@metric.adjust_neck_size(adjust)
+		if @metric.valid?
+			render json: @metric, status: :ok
+		else
+			render json: @metric.errors.full_messages, status: :unprocessable_entity
+		end
+	end
 
 	# DELETE /metrics/1
 	def destroy

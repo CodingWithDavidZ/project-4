@@ -1,249 +1,254 @@
 .App {
-  text-align: center;
+	text-align: center;
 }
 
 #login_box {
-  border: 5px solid;
-  border-radius: 25px;
-  width: auto;
-  height: auto;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 15px;
-  background-color: #f58b00;
+	border: 5px solid;
+	border-radius: 25px;
+	width: auto;
+	height: auto;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	padding: 15px;
+	background-color: #f58b00;
 }
 
 .login_input_fields {
-  background-color: #ffc170;
-  font-weight: bold;
+	background-color: #ffc170;
+	font-weight: bold;
 }
 
 .login_descriptor {
-  text-align: left;
-  margin: 0px;
-  font-size: 12px;
-  color: black;
+	text-align: left;
+	margin: 0px;
+	font-size: 12px;
+	color: black;
 }
 
 #sign_up {
-  padding: 10px;
-  padding-left: 25px;
-  color: #2f2963;
-  font-weight: bold;
+	padding: 10px;
+	padding-left: 25px;
+	color: #2f2963;
+	font-weight: bold;
 }
 
 #sign_in_button {
-  padding: 5px;
-  margin-top: 5px;
-  transition-duration: 0.4s;
-  background-color: #454372;
-  border: 1px black;
-  border-radius: 8px;
-  color: white;
-  font-weight: bold;
+	padding: 5px;
+	margin-top: 5px;
+	transition-duration: 0.4s;
+	background-color: #454372;
+	border: 1px black;
+	border-radius: 8px;
+	color: white;
+	font-weight: bold;
 }
 
 #sign_in_button:hover {
-  background-color: #2f2963;
+	background-color: #2f2963;
 }
 
 #join_text {
-  color: #dceab2;
+	color: #dceab2;
 }
 
 #sign_up_box {
-  border: 5px solid;
-  border-radius: 25px;
-  width: auto;
-  height: auto;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 15px;
-  background-color: #2f2963;
+	border: 5px solid;
+	border-radius: 25px;
+	width: auto;
+	height: auto;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	padding: 15px;
+	background-color: #2f2963;
 }
 
 .sign_up_input_fields {
-  background-color: #454372;
-  font-weight: bolder;
-  width: 70%;
-  padding: 5px;
-  color: #dceab2;
-  margin-bottom: 2px;
+	background-color: #454372;
+	font-weight: bolder;
+	width: 70%;
+	padding: 5px;
+	color: #dceab2;
+	margin-bottom: 2px;
 }
 
 .sign_up_descriptor {
-  text-align: left;
-  padding-left: 13%;
-  margin: 0px;
-  font-size: 12px;
-  color: #dceab2;
+	text-align: left;
+	padding-left: 13%;
+	margin: 0px;
+	font-size: 12px;
+	color: #dceab2;
 }
 
 #submit_button {
-  margin-top: 5px;
-  padding: 5px;
-  transition-duration: 0.4s;
-  background-color: #ffc170;
-  border: 1px black;
-  border-radius: 8px;
-  color: black;
-  font-weight: bold;
+	margin-top: 5px;
+	padding: 5px;
+	transition-duration: 0.4s;
+	background-color: #ffc170;
+	border: 1px black;
+	border-radius: 8px;
+	color: black;
+	font-weight: bold;
 }
 
 #submit_button:hover {
-  background-color: #f58b00;
+	background-color: #f58b00;
 }
 
 .measurement_fields {
-  background-color: #454372;
-  font-weight: bolder;
-  width: 70%;
-  padding: 5px;
-  color: #dceab2;
-  margin-bottom: 2px;
+	background-color: #454372;
+	font-weight: bolder;
+	width: 70%;
+	padding: 5px;
+	color: #dceab2;
+	margin-bottom: 2px;
 }
 
 .measurements_descriptor {
-  text-align: center;
-  padding-top: 2px;
-  padding-bottom: 0.75px;
-  margin: 0px;
-  font-size: 12px;
-  color: black;
+	text-align: center;
+	padding-top: 2px;
+	padding-bottom: 0.75px;
+	margin: 0px;
+	font-size: 12px;
+	color: black;
 }
 
 #measurements_box {
-  border: 5px solid;
-  border-radius: 25px;
-  width: auto;
-  height: auto;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 40px;
+	border: 5px solid;
+	border-radius: 25px;
+	width: auto;
+	height: auto;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	padding: 40px;
 
-  background-color: #f58b00;
+	background-color: #f58b00;
 }
 
 #submit_measurement_button {
-  padding: 5px;
-  margin-top: 5px;
-  transition-duration: 0.4s;
-  background-color: #454372;
-  border: 1px black;
-  border-radius: 8px;
-  color: #dceab2;
-  font-weight: bold;
+	padding: 5px;
+	margin-top: 5px;
+	transition-duration: 0.4s;
+	background-color: #454372;
+	border: 1px black;
+	border-radius: 8px;
+	color: #dceab2;
+	font-weight: bold;
 }
 
 #submit_measurement_button:hover {
-  background-color: #2f2963;
+	background-color: #2f2963;
 }
 
 .header {
-  background-color: black;
-  opacity: 0.8;
-  text-align: right;
-  padding-right: 10px;
-  height: 30px;
+	background-color: black;
+	opacity: 0.8;
+	text-align: right;
+	padding-right: 10px;
+	height: 30px;
 }
 
 .header_link {
-  padding-left: 20px;
-  padding-top: 5px;
-  font-weight: bold;
-  color: #dceab2;
-  border: none;
-  background-color: inherit;
-  font-size: 15px;
-  text-decoration: inherit;
+	padding-left: 20px;
+	padding-top: 5px;
+	font-weight: bold;
+	color: #dceab2;
+	border: none;
+	background-color: inherit;
+	font-size: 15px;
+	text-decoration: inherit;
 }
 
 ul {
-  list-style-type: none;
-  margin: 0;
-  overflow: hidden;
-  padding-left: 0px;
-  margin: 0px;
-  padding-bottom: 5px;
+	list-style-type: none;
+	margin: 0;
+	overflow: hidden;
+	padding-left: 0px;
+	margin: 0px;
+	padding-bottom: 5px;
 }
 
 li {
-  text-align: left;
+	text-align: left;
 }
 
 .user_metric_box {
-  border: 5px solid;
-  border-radius: 25px;
-  width: auto;
-  margin-left: 32%;
-  margin-right: 32%;
-  margin-top: 15px;
-  margin-bottom: 0px;
-  display: flex;
-  padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  background-color: #f58b00;
+	border: 5px solid;
+	border-radius: 25px;
+	width: auto;
+	margin-left: 32%;
+	margin-right: 32%;
+	margin-top: 15px;
+	margin-bottom: 0px;
+	display: flex;
+	padding-bottom: 0px;
+	padding-left: 20px;
+	padding-right: 20px;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	background-color: #f58b00;
 }
 
 #member_name {
-  background-color: #2f2963;
-  width: 35%;
-  border: 5px solid;
-  border-radius: 25px;
-  color: #dceab2;
-  font-weight: bold;
-  margin: auto;
+	background-color: #2f2963;
+	width: 35%;
+	border: 5px solid;
+	border-radius: 25px;
+	color: #dceab2;
+	font-weight: bold;
+	margin: auto;
 }
 
 .remove_metric {
-  background-color: #f58b00;
-  border: none;
+	background-color: #f58b00;
+	border: none;
+}
+
+.change_metric {
+	background-color: #f58b00;
+	border: none;
 }
 
 #manage_account_box {
-  border: 5px solid;
-  border-radius: 25px;
-  width: auto;
-  height: auto;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 15px;
-  background-color: #f58b00;
+	border: 5px solid;
+	border-radius: 25px;
+	width: auto;
+	height: auto;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	padding: 15px;
+	background-color: #f58b00;
 }
 
 #change_password_button {
-  padding: 5px;
-  margin-top: 5px;
-  transition-duration: 0.4s;
-  background-color: #454372;
-  border: 1px black;
-  border-radius: 8px;
-  color: #dceab2;
-  font-weight: bold;
+	padding: 5px;
+	margin-top: 5px;
+	transition-duration: 0.4s;
+	background-color: #454372;
+	border: 1px black;
+	border-radius: 8px;
+	color: #dceab2;
+	font-weight: bold;
 }
 
 .removed_metric_box {
-  border: 5px solid;
-  border-radius: 25px;
-  width: 30%;
-  height: auto;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 15px;
-  background-color: #2f2963;
-  color: #dceab2;
+	border: 5px solid;
+	border-radius: 25px;
+	width: 30%;
+	height: auto;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	padding: 15px;
+	background-color: #2f2963;
+	color: #dceab2;
 }

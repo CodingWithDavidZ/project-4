@@ -12,6 +12,36 @@ function MembersPage({ memberUrl, metricsUrl }) {
 			});
 	}, [memberUrl, metrics]);
 
+	function changeMetric(id, value) {
+		fetch(`${metricsUrl}/${id}`, {
+			method: 'PATCH',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				size: value,
+			}),
+		})
+			.then((response) => response.json())
+			.then((data) => {
+				setMetrics(data);
+			});
+	}
+
+	// function changeMetric(id, value) {
+	// 	console.log('Clicked changeMetric function');
+	// 	fetch(`${metricsUrl}/${id}`, {
+	// 		method: 'PATCH',
+	// 		body: JSON.stringify({ size: value }),
+	// 	})
+	// 		.then((response) => response.json())
+	// 		.then((data) => {
+	// 			setMetrics(
+	// 				metrics.map((metric) => (metric.user === metric ? data : metric))
+	// 			);
+	// 		});
+	// }
+
 	function removeMetric(user) {
 		fetch(`${metricsUrl}/${user.id}`, { method: 'DELETE' });
 		setMetrics(
@@ -96,12 +126,29 @@ function MembersPage({ memberUrl, metricsUrl }) {
 								<strong>Created:</strong>
 								{created}
 							</li>
+							{/* create a button to decrement the metric */}
+							<button
+								className='change_metric'
+								id={user.id}
+								value='SMALLER'
+								onClick={(e) => changeMetric(e.target.id, e.target.value)}
+							>
+								-
+							</button>
 							<button
 								className='remove_metric'
 								value={user.id}
 								onClick={() => removeMetric(user)}
 							>
 								❌
+							</button>
+							<button
+								className='change_metric'
+								id={user.id}
+								value='LARGER'
+								onClick={(e) => changeMetric(e.target.id, e.target.value)}
+							>
+								ᐩ
 							</button>
 						</ul>
 					</div>
