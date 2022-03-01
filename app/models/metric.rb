@@ -2,11 +2,15 @@ class Metric < ApplicationRecord
 	belongs_to :user
 
 	# NEEDED if adding an increment/decrement button to existing metrics
-	def adjust_neck_size(adjust)
+	def adjust_size(adjust, metric_to_adjust)
 		if adjust == 'LARGER'
-			self.update neck_size: self.neck_size + 1
+			self.update (metric_to_adjust.to_sym) =>
+					self.send(metric_to_adjust.to_sym) + 1
 		elsif adjust == 'SMALLER'
-			self.update neck_size: self.neck_size - 1
+			self.update (metric_to_adjust.to_sym) =>
+					self.send(metric_to_adjust.to_sym) - 1
+		else
+			render json: @metric.errors.full_messages, status: :unprocessable_entity
 		end
 	end
 end

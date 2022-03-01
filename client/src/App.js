@@ -28,8 +28,6 @@ function App() {
 		});
 	}, []);
 
-	console.log('app.js user', user);
-
 	return (
 		<div className='App'>
 			<Router>

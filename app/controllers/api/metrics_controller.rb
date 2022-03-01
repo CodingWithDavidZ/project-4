@@ -18,11 +18,11 @@ class Api::MetricsController < ApplicationController
 		end
 	end
 
-	# metrics/id/size
-	#! Will need to uncomment code block in models/metric.rb
+	# metrics/id/
 	def size
 		adjust = params[:size]
-		@metric.adjust_neck_size(adjust)
+		metric_to_adjust = params[:metric]
+		@metric.adjust_size(adjust, metric_to_adjust)
 		if @metric.valid?
 			render json: @metric, status: :ok
 		else
@@ -59,6 +59,7 @@ class Api::MetricsController < ApplicationController
 				:height_inches,
 				:weight_lbs,
 				:user_id,
+				:metric,
 			)
 	end
 end

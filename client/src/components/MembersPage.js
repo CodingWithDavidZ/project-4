@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import ChangeMetricButton from './ChangeMetricButton';
 
 function MembersPage({ memberUrl, metricsUrl }) {
 	const [userData, setUserData] = useState({ metrics: [] });
@@ -12,36 +13,6 @@ function MembersPage({ memberUrl, metricsUrl }) {
 			});
 	}, [memberUrl, metrics]);
 
-	function changeMetric(id, value) {
-		fetch(`${metricsUrl}/${id}`, {
-			method: 'PATCH',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify({
-				size: value,
-			}),
-		})
-			.then((response) => response.json())
-			.then((data) => {
-				setMetrics(data);
-			});
-	}
-
-	// function changeMetric(id, value) {
-	// 	console.log('Clicked changeMetric function');
-	// 	fetch(`${metricsUrl}/${id}`, {
-	// 		method: 'PATCH',
-	// 		body: JSON.stringify({ size: value }),
-	// 	})
-	// 		.then((response) => response.json())
-	// 		.then((data) => {
-	// 			setMetrics(
-	// 				metrics.map((metric) => (metric.user === metric ? data : metric))
-	// 			);
-	// 		});
-	// }
-
 	function removeMetric(user) {
 		fetch(`${metricsUrl}/${user.id}`, { method: 'DELETE' });
 		setMetrics(
@@ -51,108 +22,182 @@ function MembersPage({ memberUrl, metricsUrl }) {
 		);
 	}
 
-	const userMetrics = userData.metrics.map((user) => {
-		const created = user.created_at.split('T')[0];
+	const userMetrics = userData.metrics.map((metric) => {
+		const created = metric.created_at.split('T')[0];
 		if (
-			!user.neck_size &&
-			!user.hips_size &&
-			!user.bicep_size &&
-			!user.chest_size &&
-			!user.calf_size &&
-			!user.thigh_size &&
-			!user.waist_size &&
-			!user.weight_lbs &&
-			!user.forearm_size &&
-			!user.height_feet
+			!metric.neck_size &&
+			!metric.hip_size &&
+			!metric.bicep_size &&
+			!metric.chest_size &&
+			!metric.calf_size &&
+			!metric.thigh_size &&
+			!metric.waist_size &&
+			!metric.weight_lbs &&
+			!metric.forearm_size &&
+			!metric.height_feet
 		) {
 			return null;
 		} else {
 			return (
-				<>
-					<div className='user_metric_box' id={user.id}>
-						<ul id={user.id} className='metric_ul'>
-							{user.neck_size ? (
-								<li className='neck' id={`neck${user.id}`}>
-									<strong>Neck circumference:</strong> {user.neck_size}in
+				<React.Fragment key={metric.id}>
+					<div className='user_metric_box' id={metric.id}>
+						<ul id={metric.id} className='metric_ul'>
+							{metric.neck_size ? (
+								<li
+									className='neck_size'
+									id={metric.id}
+									key={`neck ${metric.id}`}
+								>
+									<strong>Neck circumference:</strong> {metric.neck_size}in
+									<ChangeMetricButton
+										metric={metric}
+										metricsUrl={metricsUrl}
+										setMetrics={setMetrics}
+									/>
 								</li>
 							) : null}
-							{user.chest_size ? (
-								<li className='chest' id={`chest${user.id}`}>
-									<strong>Chest circumference:</strong> {user.chest_size}in
+							{metric.chest_size ? (
+								<li
+									className='chest_size'
+									id={metric.id}
+									key={`chest ${metric.id}`}
+								>
+									<strong>Chest circumference:</strong> {metric.chest_size}in
+									<ChangeMetricButton
+										metric={metric}
+										metricsUrl={metricsUrl}
+										setMetrics={setMetrics}
+									/>
 								</li>
 							) : null}
-							{user.waist_size ? (
-								<li className='waist' id={user.id}>
-									<strong>Waist circumference:</strong> {user.waist_size}in
+							{metric.waist_size ? (
+								<li
+									className='waist_size'
+									id={metric.id}
+									key={`waist ${metric.id}`}
+								>
+									<strong>Waist circumference:</strong> {metric.waist_size}in
+									<ChangeMetricButton
+										metric={metric}
+										metricsUrl={metricsUrl}
+										setMetrics={setMetrics}
+									/>
 								</li>
 							) : null}
-							{user.hip_size ? (
-								<li className='hip' id={user.id}>
-									<strong>Hip circumference:</strong> {user.hip_size}in
+							{metric.hip_size ? (
+								<li
+									className='hip_size'
+									id={metric.id}
+									key={`hip ${metric.id}`}
+								>
+									<strong>Hip circumference:</strong> {metric.hip_size}in
+									<ChangeMetricButton
+										metric={metric}
+										metricsUrl={metricsUrl}
+										setMetrics={setMetrics}
+									/>
 								</li>
 							) : null}
-							{user.thigh_size ? (
-								<li className='thigh' id={user.id}>
-									<strong>Thigh circumference:</strong> {user.thigh_size}in
+							{metric.thigh_size ? (
+								<li
+									className='thigh_size'
+									id={metric.id}
+									key={`thigh ${metric.id}`}
+								>
+									<strong>Thigh circumference:</strong> {metric.thigh_size}in
+									<ChangeMetricButton
+										metric={metric}
+										metricsUrl={metricsUrl}
+										setMetrics={setMetrics}
+									/>
 								</li>
 							) : null}
-							{user.calf_size ? (
-								<li className='calf' id={user.id}>
-									<strong>Calf circumference:</strong> {user.calf_size}in
+							{metric.calf_size ? (
+								<li
+									className='calf_size'
+									id={metric.id}
+									key={`calf ${metric.id}`}
+								>
+									<strong>Calf circumference:</strong> {metric.calf_size}in
+									<ChangeMetricButton
+										metric={metric}
+										metricsUrl={metricsUrl}
+										setMetrics={setMetrics}
+									/>
 								</li>
 							) : null}
-							{user.bicep_size ? (
-								<li className='bicep' id={user.id}>
-									<strong>Bicep circumference:</strong> {user.bicep_size}in
+							{metric.bicep_size ? (
+								<li
+									className='bicep_size'
+									id={metric.id}
+									key={`bicep ${metric.id}`}
+								>
+									<strong>Bicep circumference:</strong> {metric.bicep_size}in
+									<ChangeMetricButton
+										metric={metric}
+										metricsUrl={metricsUrl}
+										setMetrics={setMetrics}
+									/>
 								</li>
 							) : null}
-							{user.forearm_size ? (
-								<li className='forearm' id={user.id}>
-									<strong>Forearm circumference:</strong> {user.forearm_size}in
+							{metric.forearm_size ? (
+								<li
+									className='forearm_size'
+									id={metric.id}
+									key={`forearm ${metric.id}`}
+								>
+									<strong>Forearm circumference:</strong> {metric.forearm_size}
+									in
+									<ChangeMetricButton
+										metric={metric}
+										metricsUrl={metricsUrl}
+										setMetrics={setMetrics}
+									/>
 								</li>
 							) : null}
-							{user.height_feet ? (
-								<li className='height' id={user.id}>
-									<strong>Height:</strong> {user.height_feet}'{' '}
-									{user.height_inches}"
+							{metric.height_feet ? (
+								<li
+									className='height_feet'
+									id={metric.id}
+									key={`height ${metric.id}`}
+								>
+									<strong>Height:</strong> {metric.height_feet}'{' '}
+									{metric.height_inches}"
 								</li>
 							) : null}
-							{user.weight_lbs ? (
-								<li className='weight' id={user.id}>
-									<strong>Weight:</strong> {user.weight_lbs}lbs
+							{metric.weight_lbs ? (
+								<li
+									className='weight_lbs'
+									id={metric.id}
+									key={`weight ${metric.id}`}
+								>
+									<strong>Weight:</strong> {metric.weight_lbs}lbs
+									<ChangeMetricButton
+										metric={metric}
+										metricsUrl={metricsUrl}
+										setMetrics={setMetrics}
+									/>
 								</li>
 							) : null}
-							<li className='created' id={user.id}>
+							<li
+								className='created'
+								id={metric.id}
+								key={`created weight ${metric.id}`}
+							>
 								<strong>Created:</strong>
 								{created}
 							</li>
-							{/* create a button to decrement the metric */}
-							<button
-								className='change_metric'
-								id={user.id}
-								value='SMALLER'
-								onClick={(e) => changeMetric(e.target.id, e.target.value)}
-							>
-								-
-							</button>
 							<button
 								className='remove_metric'
-								value={user.id}
-								onClick={() => removeMetric(user)}
+								value={metric.id}
+								key={`remove ${metric.id}`}
+								onClick={() => removeMetric(metric)}
 							>
 								❌
 							</button>
-							<button
-								className='change_metric'
-								id={user.id}
-								value='LARGER'
-								onClick={(e) => changeMetric(e.target.id, e.target.value)}
-							>
-								ᐩ
-							</button>
 						</ul>
 					</div>
-				</>
+				</React.Fragment>
 			);
 		}
 	});

@@ -123,12 +123,12 @@ function Measurements({ metricsUrl, user }) {
 						Circumference of hips in inches?
 					</h4>
 					<input
-						value={input.hips_size}
+						value={input.hip_size}
 						type='number'
 						step='0.25'
 						className='measurement_fields'
-						id='hips_size_field'
-						name='hips_size'
+						id='hip_size'
+						name='hip_size'
 						placeholder='Hips'
 						onChange={handleChange}
 					/>
@@ -155,7 +155,7 @@ function Measurements({ metricsUrl, user }) {
 						type='number'
 						step='0.25'
 						className='measurement_fields'
-						id='calf_size_field'
+						id='calf_size'
 						name='calf_size'
 						placeholder='Calf'
 						onChange={handleChange}
@@ -169,7 +169,7 @@ function Measurements({ metricsUrl, user }) {
 						type='number'
 						step='0.25'
 						className='measurement_fields'
-						id='bicep_size_field'
+						id='bicep_size'
 						name='bicep_size'
 						placeholder='Bicep'
 						onChange={handleChange}
@@ -183,7 +183,7 @@ function Measurements({ metricsUrl, user }) {
 						type='number'
 						step='0.25'
 						className='measurement_fields'
-						id='forearm_size_field'
+						id='forearm_size'
 						name='forearm_size'
 						placeholder='Forearm'
 						onChange={handleChange}
@@ -196,7 +196,7 @@ function Measurements({ metricsUrl, user }) {
 						step='1'
 						pattern='\d+'
 						className='measurement_fields'
-						id='height_feet_field'
+						id='height_feet'
 						name='height_feet'
 						placeholder='Feet'
 						onChange={handleChange}
@@ -208,7 +208,7 @@ function Measurements({ metricsUrl, user }) {
 						step='1'
 						pattern='\d+'
 						className='measurement_fields'
-						id='height_inches_field'
+						id='height_inches'
 						name='height_inches'
 						placeholder='Inches'
 						onChange={handleChange}
@@ -222,7 +222,7 @@ function Measurements({ metricsUrl, user }) {
 						type='number'
 						step='0.01'
 						className='measurement_fields'
-						id='weight_lbs_field'
+						id='weight_lbs'
 						name='weight_lbs'
 						placeholder='Weight'
 						onChange={handleChange}
