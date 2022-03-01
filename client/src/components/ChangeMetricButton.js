@@ -25,13 +25,9 @@ function ChangeMetricButton({ metric, metricsUrl, setMetrics }) {
 				className='change_metric'
 				id={metric.id}
 				value='SMALLER'
-				onClick={(e) =>
-					changeMetric(
-						metric.id,
-						'SMALLER',
-						e.target.parentElement.parentElement.className
-					)
-				}
+				onClick={(e) => {
+					changeMetric(metric.id, 'SMALLER', e.target.parentElement.className);
+				}}
 			>
 				➖
 			</button>
@@ -40,11 +36,7 @@ function ChangeMetricButton({ metric, metricsUrl, setMetrics }) {
 				id={metric.id}
 				value='LARGER'
 				onClick={(e) =>
-					changeMetric(
-						metric.id,
-						'LARGER',
-						e.target.parentElement.parentElement.className
-					)
+					changeMetric(metric.id, 'LARGER', e.target.parentElement.className)
 				}
 			>
 				➕

@@ -30,25 +30,24 @@ function SignUp({ signUpUrl, user, onLogin }) {
 					password: input.password,
 				},
 			}),
-		})
-			.then((r) => {
-				if (r.ok) {
-					r.json().then((user) => onLogin(user));
-				} else {
-					alert('Username already exists');
-				}
-			})
-			.then(() => {
-				setInput({
-					first_name: '',
-					last_name: '',
-					birthdate: '',
-					username: '',
-					password: '',
-				});
-				navigate('/measurements');
-			});
-		console.log('SignUp.js user', user);
+		}).then((r) => {
+			if (r.ok) {
+				r.json()
+					.then((user) => onLogin(user))
+					.then(() => {
+						setInput({
+							first_name: '',
+							last_name: '',
+							birthdate: '',
+							username: '',
+							password: '',
+						});
+						navigate('/measurements');
+					});
+			} else {
+				alert('Username already taken');
+			}
+		});
 	}
 
 	return (
