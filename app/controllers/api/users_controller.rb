@@ -7,10 +7,20 @@ class Api::UsersController < ApplicationController
 	end
 
 	# POST /users
+	# def create
+	# 	user = User.create!(user_params)
+	# 	session[:user_id] = user.id
+	# 	render json: user, status: :created
+	# end
+
 	def create
-		user = User.create!(user_params)
-		session[:user_id] = user.id
-		render json: user, status: :created
+		if User.new(user_params).valid? == true
+			user = User.create!(user_params)
+			session[:user_id] = user.id
+			render json: user, status: :created
+		else
+			render json: { errors: 'Invalid username' }, status: :unauthorized
+		end
 	end
 
 	def update
